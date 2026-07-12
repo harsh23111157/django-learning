@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>#3 template</title>
+  <link rel='stylesheet' href='main.css'>
+</head>
+<body>
+
+  <!-- if else  -->
+  {%if blogs.0.is_featured%}
+  <p>featured blogs:{{blogs.0.title}}</p>
+  {% else %}
+  <p>no featured blogs:{{blogs.0.title}}</p>
+  {% endif %}
+  
+  <hr>
+<!-- 
+  for loop -->
+  <ul>
+    {%for blog in blogs%}
+    <li>{{forloop.counter}}.{{blog.title|title}}:{{blog.author}}</li>
+    {%empty%}
+    <li>no blogs available</li>
+    {%endfor%}
+   
+  </ul>
+
+  <!-- with  -->
+   <ul>
+   {%with total_blogs=blogs|length%}
+   <li>total_blogs:{{total_blogs}}</li>
+   {%endwith%}
+   </ul>
+
+   <!-- cycle -->
+    <hr>
+    <h1>blogs in table</h1>
+    <table border="1" cellpadding="5" cellspacing="0">
+      {%for blog in blogs%}
+      <tr style="background-color: {%cycle 'lightblue' 'lightgreen'%};">
+         <td>{{forloop.counter}}</td>
+         <td>{{blog.title}}</td>
+         <td>{{blog.author}}</td>
+         <td>{{blog.is_featured|yesno:'yes,no'}}</td>
+      </tr>
+      {%endfor%}
+
+    </table>
+
+
+    <!-- first of -->
+
+    <p>author:{%firstof blog.1.author 'ABC'%}</p>
+
+
+     <p>{{html_code|safe}}</p>
+
+     {%verbatim%}
+     <p>author:{{blog.1.author}}</p>
+     {%endverbatim%}
+
+
+
+
+
+</body>
+</html>
