@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>#1 template basics</title>
+  <link rel='stylesheet' href='main.css'>
+</head>
+
+<body>
+  <h1>Template Basic</h1>
+  <p>welcome to my blog page</p>
+  <!-- single variable -->
+   <p>name:{{name}}</p>
+   <p>age:{{age}}</p>
+   <!-- list acess -->
+    <p>main skill:{{skill.0}}</p>
+    <p>skill:{{skill}}</p>
+    <!-- object attribute -->
+
+    <p>username:{{user.name}}</p>
+    <p>user age:{{user.age}}</p>
+
+    <!-- dictionary -->
+
+    <h2>blog info</h2>
+    <p>title:{{blog.title}}</p>
+    <p>create at:{{blog.created_at}}</p>
+    <p>content:{{blog.content|safe}}</p>
+    <p>author name:{{blog.author.name}}</p>
+
+    <!-- default value -->
+     <p>default empty:{{empty_value|default:"no value provided"}}</p>
+  
+
+</body>
+
+</html>
