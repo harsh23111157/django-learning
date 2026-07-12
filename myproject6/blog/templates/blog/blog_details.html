@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>#2 template</title>
+  <link rel='stylesheet' href='main.css'>
+</head>
+<body>
+  <h1>blog filter page</h1>
+  <!-- yes or no -->
+  <p>author available?:{{post.author|yesno:"yes,no,maybe"}}</p>
+  <p>comments count:{{post.comments_count}} comment{{post.comments_count|pluralize}}</p>
+<hr>
+  <!-- date and time -->
+   <p>created_at:{{post.created_at|time:'H:i'}}</p>
+   <p>created_at:{{post.created_at|date:"D d M Y"}}</p>
+
+   <hr>
+   <!-- encode -->
+    <p><b>title encode:</b>{{post.title|urlencode}}</p>
+<!--     
+    format -->
+
+    <p><b>float format example:</b>{{123.456789|floatformat:3}}</p>
+
+
+
+
+
+
+
+
+
+
+
+  <hr>
+  <!-- text filter -->
+   <p><b>title(normal):</b>{{post.title}}</p>
+   <p><b>title(uppercase):</b>{{post.title|upper}}</p>
+   <p><b>title(lowercase):</b>{{post.title|lower}}</p>
+   <p><b>title(capital first):</b>{{post.title|capfirst}}</p>
+   <p><b>title(title):</b>{{post.title|title}}</p>
+   <p><b>title(truncatechar):</b>{{post.title|truncatechars:20}}</p>
+   <p><b>title(trucatewords):</b>{{post.title|truncatewords:2}}</p>
+   <p><b>linebreak:</b>{{post.title|linebreaks}}</p>
+
+   <hr>
+   <!-- no filter -->
+
+   <p><b>original price</b>{{post.price}}</p>
+   <p><b>original price(+5):</b>{{post.price|add:5}}</p>
+   
+   <!-- division by -->
+
+   {%if post.number|divisibleby:2%}
+   <p>{{post.number}} is even</p>
+   {%else %}
+   <p>{{post.number}} is odd</p>
+   {%endif%}
+
+   <!-- list filter -->
+    <p><b>first tag:</b>{{post.tags|first}}</p>
+    <p><b>last tag:</b>{{post.tags|last}}</p>
+    <p><b>length:</b>{{post.tags|length}}</p>
+    <p><b>slice(first two):</b>{{post.tags|slice:'2'}}</p>
+    <p><b>join:</b>{{post.tags|join:' '}}</p>
+
+
+
+  
+</body>
+</html>
