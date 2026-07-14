@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<section class="contact">
+  <h1>contact me</h1>
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="your name">
+    <input type="email" name="email" placeholder="your email">
+    <textarea name="message" placeholder="your message"></textarea>
+    <button type="submit">send message</button>
+  </form>
+
+</section>
+{%endblock%}
