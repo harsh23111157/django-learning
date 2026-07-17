@@ -1,0 +1,11 @@
+{%extends 'todoapp/base.html'%}
+{%block content%}
+<h2>delete task</h2>
+<p>are you sure you want to delete the task</p>
+<form method="POST">
+  {%csrf_token%}
+  <button type="submit" class="btn btn-danger">yes,delete</button>
+  <a href="{%url 'todoapp:task_list'%}" class="btn btn-secondary">Cancel</a>
+</form>
+
+{%endblock%}

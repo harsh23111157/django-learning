@@ -1,0 +1,51 @@
+{%extends 'todoapp/base.html'%}
+{%block content%}
+
+
+
+<h2>all tasks</h2>
+<table class="table  table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>status</th>
+      <th>created_at</th>
+      <th>actions</th>
+    </tr>
+
+
+  </thead>
+  <tbody>
+    {%for task in tasks%}
+    <tr>
+      <td>{{task.title}}</td>
+      <td>{{task.description}}</td>
+      <td>
+        <form method="POST" action="{%url 'todoapp:task_toggle_complete' task.pk %}" style="display:inline ;">
+          {%csrf_token%}
+          <button type="submit" class="btn btn-sm {%if task.completed %} btn-success {% else %}btn-secondary{%endif%}">
+
+            {%if task.completed %}done{%else%}Mark{%endif%}
+
+          </button>
+
+        </form>
+      </td>
+      <td>{{task.created_at|date:'M d,Y H:i'}}</td>
+      <td><a class='btn btn-sm btn-warning' href="{%url 'todoapp:task_update' task.pk %}">edit</a>
+        <a class='btn btn-sm btn-danger' href="{% url 'todoapp:task_delete' task.pk %}">delete</a>
+      </td>
+
+    </tr>
+    {% empty %}
+
+    <tr>
+      <td colspan="5" class="text-centre text-muted">no tasks available.</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+
+{%endblock%}
